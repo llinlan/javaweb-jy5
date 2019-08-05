@@ -37,6 +37,27 @@ public class ResponseCode<T> {
                 ", mag='" + mag + '\'' +
                 '}';
     }
+
     //成功的时候只要返回状态码和成功获取的数据就可以了
+    //泛型类写在类名后面，泛型接口接口后面，泛型方法写在返回类型前面
+    public static <T> ResponseCode successRs(Integer status , T data){
+        ResponseCode rs=new ResponseCode();
+        rs.setStatus(status);
+        rs.setData(data);
+        return rs;
+    }
+    //重写成功
+    public static <T> ResponseCode successRs( T data){
+        ResponseCode rs=new ResponseCode();
+        rs.setStatus(0);
+        rs.setData(data);
+        return rs;
+    }
     //失败的时候只要返回状态码和失败的信息就可以了
+    public static <T> ResponseCode defateRs(Integer status ,String mag){
+        ResponseCode rs=new ResponseCode();
+        rs.setStatus(status);
+        rs.setMag(mag);
+        return rs;
+    }
 }

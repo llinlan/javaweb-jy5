@@ -13,55 +13,44 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "goodsController",value = "/manage/product/list.do")
+@WebServlet(name = "goodsController",value = "/manage/product/*")
 public class goodsController extends HttpServlet {
-
-    private GoodsService uc=new GoodsService();
-
+    private GoodsService gs= new GoodsService();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         //获取请求路径信息
         String pathInfo = request.getPathInfo();
+
         //调用工具类
         String path = PathUTil.getPath(pathInfo);
-
         ResponseCode rs = null;
 
         //判断一下是什么样的请求
         switch (path) {
             case "list":
-                rs = listDo(request);
+                rs = getAll(request);
                 break;
         }
         //返回响应数据
         response.getWriter().write(rs.toString());
     }
-        //获取商品列表的请求
-        private ResponseCode listDo(HttpServletRequest request){
+        //获取商品列表
+        private ResponseCode getAll(HttpServletRequest request){
             ResponseCode rs=new ResponseCode();
-            //判断用户登陆状态
-            HttpSession session = request.getSession();
-            Users user=(Users)session.getAttribute("user");
-            if(user==null){
-                rs.setData(3);
-                rs.setMag("请登陆后操作！");
-                return rs;
-            }
-            if(user.getType()!=1){
-                rs.setData(3);
-                rs.setMag("没有操作权限！");
-                return rs;
-            }
-            //获取参数
-            String pageSize=request.getParameter("pageSize");
-            String pageNum=request.getParameter("pageNum");
-            rs = uc.selectAll(pageSize, pageNum);
             //调用业务层处理业务
+            rs= gs.getAll();
             return rs;
 
         }
+
+        private ResponseCode sousuoDo(HttpServletRequest request){
+        //获取参数
+        String gid=request.getParameter("gid");
+        ResponseCode rs = gs.selectOne(gid);
+        //调用业务层处理业务
+        return  rs;
+    }
     }
 
