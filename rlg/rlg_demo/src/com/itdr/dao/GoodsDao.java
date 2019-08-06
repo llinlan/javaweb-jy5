@@ -26,17 +26,17 @@ public class GoodsDao {
         }
      //根据ID查找一个商品详情
      //根据ID查找一个用户
-     public Goods selectOne(String gid) {
-         //使用核心类
-         QueryRunner qr=new QueryRunner(PoolUTil.getCom());
-         String sql="select * from goods where id=?";
-         Goods u= null;
-         try {
-             u = qr.query(sql, new BeanHandler<Goods>(Goods.class),gid);
-         } catch (SQLException e) {
-             e.printStackTrace();
-         }
-         return u;
-     }
-    }
+//     public Goods selectOne(String gid) {
+//         //使用核心类
+//         QueryRunner qr=new QueryRunner(PoolUTil.getCom());
+//         String sql="select * from goods where id=?";
+//         Goods u= null;
+//         try {
+//             u = qr.query(sql, new BeanHandler<Goods>(Goods.class),gid);
+//         } catch (SQLException e) {
+//             e.printStackTrace();
+//         }
+//         return u;
+//     }
+   }
 

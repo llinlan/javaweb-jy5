@@ -30,27 +30,37 @@ public class goodsController extends HttpServlet {
         //判断一下是什么样的请求
         switch (path) {
             case "list":
-                rs = getAll(request);
+//                rs = getAll(request);
+                 getAll(request,response);
                 break;
         }
         //返回响应数据
         response.getWriter().write(rs.toString());
     }
         //获取商品列表
-        private ResponseCode getAll(HttpServletRequest request){
-            ResponseCode rs=new ResponseCode();
+        private void getAll(HttpServletRequest request,HttpServletResponse response){
             //调用业务层处理业务
-            rs= gs.getAll();
-            return rs;
+            ResponseCode  rs= gs.getAll();
+//            return rs;
+            request.setAttribute("gli",rs);
+
+            try {
+                //请求转发，
+                request.getRequestDispatcher("/WEB-INF/goodslist.jsp").forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
 
-        private ResponseCode sousuoDo(HttpServletRequest request){
-        //获取参数
-        String gid=request.getParameter("gid");
-        ResponseCode rs = gs.selectOne(gid);
-        //调用业务层处理业务
-        return  rs;
-    }
+//        private ResponseCode sousuoDo(HttpServletRequest request){
+//        //获取参数
+//        String gid=request.getParameter("gid");
+//        ResponseCode rs = gs.selectOne(gid);
+//        //调用业务层处理业务
+//        return  rs;
+//    }
     }
 

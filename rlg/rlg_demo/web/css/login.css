@@ -1,0 +1,26 @@
+#wk{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+#contiue{
+    height: 200px;
+    width: 200px;
+    border: bisque 1px solid;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+#contiue_f{
+}
+#contiue_f input{
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.cf_f{
+    padding-left: 10px;
+    height: 25px;
+    border-radius:2px;
+    border-width: 1px;
+    border-style: solid;
+}

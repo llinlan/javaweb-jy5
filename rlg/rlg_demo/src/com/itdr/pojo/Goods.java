@@ -7,12 +7,12 @@ public class Goods {
     private String mainImage;
     private double price;
 
-    public Integer getGid() {
+    public Integer getId() {
         return id;
     }
 
-    public void setGid(Integer gid) {
-        this.id = gid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getGname() {
@@ -39,11 +39,11 @@ public class Goods {
         this.mainImage = mainImage;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

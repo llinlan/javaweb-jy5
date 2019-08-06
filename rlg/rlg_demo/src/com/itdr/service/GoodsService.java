@@ -16,17 +16,17 @@ public class GoodsService {
         return rs;
     }
 
-    public ResponseCode selectOne(String gid) {
-        ResponseCode  rs=new ResponseCode();
-        //查询是否有这样一个商品
-        Goods u = gd.selectOne(gid);
-        //如果商品不存在
-        if(u==null){
-            rs=ResponseCode.defateRs(Const.GOODS_NULL_CODE,Const.GOODS_NULL_MSG);
-            return  rs;
-        }
-        rs=ResponseCode.successRs(u);
-        return rs;
-    }
+//    public ResponseCode selectOne(String gid) {
+//        ResponseCode  rs=new ResponseCode();
+//        //查询是否有这样一个商品
+//        Goods u = gd.selectOne(gid);
+//        //如果商品不存在
+//        if(u==null){
+//            rs=ResponseCode.defateRs(Const.GOODS_NULL_CODE,Const.GOODS_NULL_MSG);
+//            return  rs;
+//        }
+//        rs=ResponseCode.successRs(u);
+//        return rs;
+//    }
 
 }
