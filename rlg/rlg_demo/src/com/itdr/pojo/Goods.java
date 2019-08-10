@@ -1,17 +1,17 @@
 package com.itdr.pojo;
 
 public class Goods {
-    private Integer id;
+    private String id;
     private String gname;
     private String subtitle;
     private String mainImage;
     private double price;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -50,7 +50,7 @@ public class Goods {
     @Override
     public String toString() {
         return "Goods{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", gname='" + gname + '\'' +
                 ", subtitle='" + subtitle + '\'' +
                 ", mainImage='" + mainImage + '\'' +

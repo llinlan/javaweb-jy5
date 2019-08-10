@@ -22,9 +22,14 @@ public class Const {
     public static final Integer GOODS_NULL_CODE=107;
     public static final String GOODS_NULL_MSG="商品不存在";
 
+    public static final Integer GOODS_UPDATE_CODE=108;
+    public static final String GOODS_UPDATE_MSG="修改产品状态成功";
 
-
+    public static final Integer GOODS_UPDATED_CODE=109;
+    public static final String GOODS_UPDATED_MSG="修改产品状态失败";
     //商品分类相关状态
     // 订单相关状态
+    public static final Integer ORDERS_NULL_CODE=107;
+    public static final String ORDERS_NULL_MSG="没有找到订单";
 
 }
