@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+<body>
+<div id="continue">
+    <form action="/manage/user/login.do" method="post">
+     <span>用户名：</span>
+     <input type="text" placeholder="请输入用户名" name="username" id="un" >
+     <br>
+     <span>密码：</span>
+     <input type="password" placeholder="请输入密码" name="password" id="pd">
+     <br>
+     <input type="button" value="登陆" id="btn">
+        <div id="nrhz"></div>
+      </form>
+    </div>
+</body>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+    $("#btn").click(function () {
+        var un=$("#un").val();
+        var pd=$("#pd").val();
+        $.post(
+            "/manage/user/login.do",
+            {username:un,password:pd},
+            function (dt) {
+                if(dt.status!==0){
+                    $("#nrhz").empty();
+                    $("#nrhz").append("<p>"+ dt.mag + "</p>");
+                }else {
+                    window.open("homes.html")
+
+                }
+            }
+        )
+    })
+</script>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <link rel="stylesheet" href="css/homes.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/userlist.css">
+</head>
+<body>
+<div id="continue">
+        <!--左侧-->
+    <div id="left">
+        <p>睿乐购后台管理系统</p>
+        <div class="left-d">用户管理
+            <img src="images/zy.png" alt="" class="con_left_ul_li_zy">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx">
+        </div>
+
+            <ul id="not-null">
+                <li>
+                    <a href="userlist.html" >用户列表  </a>
+                </li>
+                <li>
+                    <a href="" >管理员登陆  </a>
+                </li>
+                <li>
+                    <a href="" >禁用用户  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">商品管理
+            <img src="images/ym.png" alt="" class="con_left_ul_li_ym">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx1">
+        </div>
+            <ul id="not-null1">
+                <li>
+                    <a href="gooslist.html" >商品列表  </a>
+                </li>
+                <li>
+                    <a href="" >产品上下架  </a>
+                </li>
+                <li>
+                    <a href="" >图片上传  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">订单管理
+            <img src="images/yh.png" alt="" class="con_left_ul_li_yh">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx2"></div>
+            <ul id="not-null2">
+                <li>
+                    <a href="orderlist.html" >订单列表  </a>
+                </li>
+                <li>
+                    <a href="" >订单发货  </a>
+                </li>
+                <li>
+                    <a href="" >订单详情  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">分类管理
+            <img src="images/gj.png" alt="" class="con_left_ul_li_gj">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx3"></div>
+            <ul id="not-null3">
+                <li>
+                    <a href="" >分类列表  </a>
+                </li>
+                <li>
+                    <a href="" >-  </a>
+                </li>
+                <li>
+                    <a href="" >-  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">设置
+            <img src="images/sz.png" alt=""class="con_left_ul_li_sz">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx4"></div>
+        <ul id="not-null4">
+            <li>
+                <a href="">网络设置</a>
+            </li>
+            <li>
+                <a href="" >邮件服务 </a>
+            </li>
+            <li>
+                <a href="" >偏好设置 </a>
+            </li>
+        </ul>
+        <div class="left-d">授权
+            <img src="images/sq.png" alt=""class="con_left_ul_li_sq">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx5"></div>
+        <ul id="not-null5">
+            <li>
+                <a href="" >意见反馈</a>
+            </li>
+            <li>
+                <a href="" >关于本站</a>
+            </li>
+            <li>
+                <a href="" >联系：123</a>
+            </li>
+        </ul>
+    </div>
+    <!--右侧-->
+    <div id="right">
+            <!--右上-->
+            <div id="right-top">
+                <div id="rt-a">
+                    <div><img src="images/6.png"  class="sousuo"></div>
+                    <div><img src="images/5.png"  class="sousuo"></div>
+                    <div><img src="images/4.png"  class="sousuo"></div>
+                    <div><img src="images/sousuo.png"  class="sousuo"></div>
+                    <div><input type="text" placeholder="请输入搜索的内容" class="kk"></div>
+                </div>
+
+                <div id="rt-b">
+                    <div></div>
+                    <div></div>
+
+                    <div >super~</div>
+                    <div> <img src="images/touxiang.png"  class="touxiang"></div>
+                    <div><img src="images/7.png"  class="sousuo"></div>
+            </div>
+
+            </div>
+            <!--右下-->
+            <div id="right-bottom">
+                <h2>用户列表</h2>
+                <div id="rb-top">
+                <input type="text" placeholder="请输入用户的ID" id="pd-inp">
+                    <input type="button" value="搜索" id="pd-btn">
+               <div id="inp-nr">
+                   
+               </div>
+
+                </div>
+                <table  id="tab"
+                        border="1"
+                        bgcolor="#e6e6fa">
+
+                </table>
+            </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+    $(".left-d").click(
+        function(){
+            $(this).next().slideToggle();
+        }
+    );
+
+    $(function () {
+        //发请求拿用户数据
+        $.get(
+            "/manage/user/list.do",
+            function (dt) {
+                if(dt.status!==0){
+                    alert(dt.mag);
+                }else{
+                    var tou= "<tr><th>ID</th> <th>用户名</th> <th>电话</th><th>权限</th> <th>状态</th><th>操作</th></tr>";
+                    $("#tab").append(tou);
+                    for (var i = 0; i < dt.data.length; i++) {
+                        var s="<tr>" +
+                            "<td>"+dt.data[i].id+"</td>" +
+                            "<td>"+dt.data[i].uname+"</td>" +
+                            "<td>"+dt.data[i].tel+"</td>" +
+                            "<td>"+dt.data[i].type+"</td>" +
+                            "<td>"+dt.data[i].stats+"</td>" +
+                             "<td>\n"+
+                            "<button type=\'button\' id=\"b\">编辑</button>"+
+                            "<button type=\'button\' id=\"b\">禁用</button>"+
+                            "<button type=\'button\' id=\"b\">删除</button>"+
+                            "</tr>";
+                             $("#tab").append(s);
+                    }
+                }
+            },
+            "json"
+        )
+    })
+   $("#pd-inp").blur(function () {
+       var keyWord=$("#pd-inp").val();
+       $.post(
+           "/manage/user/sousuo.do",
+           {key:keyWord},
+           function (dt) {
+               if(dt.status!==0){
+                   alert(dt.mag);
+               }else{
+                   $("#inp-nr").empty()
+                   $("#inp-nr").append("<ul></ul>>")
+                   for(var i=0;i<dt.data.length;i++){
+                       var id=dt.data[i].id;
+                       var ss="<li>"+id+"</li>";
+                       $("#inp-nr ul").append(ss)
+                   }
+
+               }
+           }
+       )
+   })
+</script>
+
+</html>

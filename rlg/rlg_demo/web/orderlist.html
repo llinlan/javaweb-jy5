@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>订单页面</title>
+    <link rel="stylesheet" href="css/homes.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/userlist.css">
+    <style>
+        #inp-nr-g {
+            background-color: antiquewhite;
+            width: 160px;
+        }
+        #inp-nr-g ul li{
+            border: 1px white solid;
+        }
+    </style>
+</head>
+<body>
+<div id="continue">
+        <!--左侧-->
+    <div id="left">
+        <p>睿乐购后台管理系统</p>
+        <div class="left-d">用户管理
+            <img src="images/zy.png" alt="" class="con_left_ul_li_zy">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx">
+        </div>
+
+            <ul id="not-null">
+                <li>
+                    <a href="userlist.html" >用户列表  </a>
+                </li>
+                <li>
+                    <a href="" >管理员登陆  </a>
+                </li>
+                <li>
+                    <a href="" >禁用用户  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">商品管理
+            <img src="images/ym.png" alt="" class="con_left_ul_li_ym">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx1">
+        </div>
+            <ul id="not-null1">
+                <li>
+                    <a href="gooslist.html" >商品列表  </a>
+                </li>
+                <li>
+                    <a href="" >产品上下架  </a>
+                </li>
+                <li>
+                    <a href="" >图片上传  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">订单管理
+            <img src="images/yh.png" alt="" class="con_left_ul_li_yh">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx2"></div>
+            <ul id="not-null2">
+                <li>
+                    <a href="orderlist.html" >订单列表  </a>
+                </li>
+                <li>
+                    <a href="" >订单发货  </a>
+                </li>
+                <li>
+                    <a href="" >订单详情  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">分类管理
+            <img src="images/gj.png" alt="" class="con_left_ul_li_gj">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx3"></div>
+            <ul id="not-null3">
+                <li>
+                    <a href="categorylist.html" >分类列表  </a>
+                </li>
+                <li>
+                    <a href="" >-  </a>
+                </li>
+                <li>
+                    <a href="" >-  </a>
+                </li>
+            </ul>
+
+        <div class="left-d">设置
+            <img src="images/sz.png" alt=""class="con_left_ul_li_sz">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx4"></div>
+        <ul id="not-null4">
+            <li>
+                <a href="">网络设置</a>
+            </li>
+            <li>
+                <a href="" >邮件服务 </a>
+            </li>
+            <li>
+                <a href="" >偏好设置 </a>
+            </li>
+        </ul>
+        <div class="left-d">授权
+            <img src="images/sq.png" alt=""class="con_left_ul_li_sq">
+            <img src="images/sjx.png" alt="" class="con_left_ul_li_sjx5"></div>
+        <ul id="not-null5">
+            <li>
+                <a href="" >意见反馈</a>
+            </li>
+            <li>
+                <a href="" >关于本站</a>
+            </li>
+            <li>
+                <a href="" >联系：123</a>
+            </li>
+        </ul>
+    </div>
+    <!--右侧-->
+    <div id="right">
+            <!--右上-->
+            <div id="right-top">
+                <div id="rt-a">
+                    <div><img src="images/6.png"  class="sousuo"></div>
+                    <div><img src="images/5.png"  class="sousuo"></div>
+                    <div><img src="images/4.png"  class="sousuo"></div>
+                    <div><img src="images/sousuo.png"  class="sousuo"></div>
+                    <div><input type="text" placeholder="请输入搜索的内容" class="kk"></div>
+                </div>
+
+                <div id="rt-b">
+                    <div></div>
+                    <div></div>
+
+                    <div >super~</div>
+                    <div> <img src="images/touxiang.png"  class="touxiang"></div>
+                    <div><img src="images/7.png"  class="sousuo"></div>
+            </div>
+
+            </div>
+            <!--右下-->
+            <div id="right-bottom">
+                <h2>订单列表</h2>
+                <div id="rb-top">
+                <input type="text" placeholder="请输入订单编号" id="inp-g">
+                    <input type="button" value="搜索" id="btn-g">
+               <div id="inp-nr-g">
+                   
+               </div>
+
+                </div>
+                <table  id="tab"
+                        border="1"
+                        bgcolor="#e6e6fa">
+                     <tr>
+                         <th>订单编号</th>
+                         <th>成交金额</th>
+                         <th>支付方式</th>
+                         <th>postage</th>
+                         <th>status</th>
+                         <th>支付状态</th>
+                         <th>成交时间</th>
+                         <th>发起时间</th>
+                         <th>结束时间</th>
+                         <th>关闭时间</th>
+                         <th>创建时间</th>
+                     </tr>>
+
+                </table>
+            </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+    $(".left-d").click(
+        function(){
+            $(this).next().slideToggle();
+        }
+    );
+
+    $(function () {
+        //发请求拿商品数据
+        $.get(
+            "/manage/order/list.do",
+            function (dt) {
+                if(dt.status!==0){
+                    alert(dt.mag);
+                }else{
+                   // var to= "<tr><th>订单编号</th> <th>成交金额</th> <th>支付方式</th><th>postage</th> <th>status</th><th>支付状态</th></tr><th>成交时间</th><th>发起时间</th><th>结束时间</th><th>关闭时间</th><th>创建时间</th>";
+                   // $("#tab").append(to);
+                    for (var i = 0; i < dt.data.length; i++) {
+                        var g="<tr>" +
+                            "<td>"+dt.data[i].orderNo+"</td>" +
+                            "<td>"+dt.data[i].payment+"</td>" +
+                            "<td>"+dt.data[i].paymentType+"</td>" +
+                            "<td>"+dt.data[i].paymentTypeDesc+"</td>" +
+                            "<td>"+dt.data[i].postage+"</td>" +
+                            "<td>"+dt.data[i].status+"</td>" +
+                            "<td>"+dt.data[i].statusDesc+"</td>" +
+                            "<td>"+dt.data[i].paymentTime+"</td>" +
+                            "<td>"+dt.data[i].sendTime+"</td>" +
+                            "<td>"+dt.data[i].endTime+"</td>" +
+                            "<td>"+dt.data[i].closeTime+"</td>" +
+                            "<td>"+dt.data[i].createTime+"</td>" +
+                            "<td>\n"+
+                             "<button type=\'button\' id=\"bg\">修改订单</button>"+
+                             "<button type=\'button\' id=\"bg\">删除订单</button>"+
+                            "</tr>";
+                             $("#tab").append(g);
+                    }
+                }
+            },
+            "json"
+        )
+    })
+</script>
+
+</html>
