@@ -3,6 +3,7 @@ package com.itdr.controller;
 import com.itdr.common.ResponseCode;
 import com.itdr.pojo.Users;
 import com.itdr.service.UserService;
+import com.itdr.utils.JsonUtils;
 import com.itdr.utils.PathUTil;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,7 @@ import java.util.List;
 @WebServlet("/manage/user/*")
 public class Servlet_userController extends HttpServlet {
 
-   private UserService uc=new UserService();
+    private UserService uc=new UserService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
@@ -34,12 +35,12 @@ public class Servlet_userController extends HttpServlet {
         //判断一下是什么样的请求
         switch (path) {
             case "list":
-               // rs = listDo(request);
-                listDo(request,response);
+              // rs = listDo(request);
+                rs =listDo(request,response);
                 break;
             case "login":
-              //  rs= loginDo(request);
-                 loginDo(request,response);
+             // rs= loginDo(request);
+                rs =loginDo(request,response);
                 break;
             case "disableuser":
                 rs= disableuserDo(request);
@@ -64,48 +65,33 @@ public class Servlet_userController extends HttpServlet {
          */
 
 //        //返回响应数据
-//        response.getWriter().write(rs.toString());
+         // response.getWriter().write(rs.toString());
+        response.setContentType("text/json;charset=utf-8");
+        response.getWriter().write(JsonUtils.obj2String(rs));
     }
         //获取所有用户列表的请求
-        private void listDo(HttpServletRequest request,HttpServletResponse response){
+        private ResponseCode listDo(HttpServletRequest request,HttpServletResponse response){
            ResponseCode rs=new ResponseCode();
             //判断用户登陆状态
             HttpSession session = request.getSession();
             Users user=(Users)session.getAttribute("user");
-//            if(user==null){
-//                rs.setData(3);
-//                rs.setMag("请登陆后操作！");
-////                return rs;
-//            }
-//            if(user.getType()!=1){
-//                rs.setData(3);
-//                rs.setMag("没有操作权限！");
-////                return rs;
-//            }
+
             //获取参数
             String pageSize=request.getParameter("pageSize");
             String pageNum=request.getParameter("pageNum");
 
              rs = uc.selectAll(pageSize, pageNum);
             //放进域里面
-            request.setAttribute("uli",rs);
+//            request.setAttribute("uli",rs);
 
-            try {
-                //请求转发，
-                request.getRequestDispatcher("/WEB-INF/userlist.jsp").forward(request,response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
             //调用业务层处理业务
-           // return rs;
+                return rs;
 
         }
 
         //用户登录请求
-        private void loginDo(HttpServletRequest request,HttpServletResponse response) {
+        private ResponseCode loginDo(HttpServletRequest request,HttpServletResponse response) {
             //获取参数
             String username=request.getParameter("username");
             String password=request.getParameter("password");
@@ -116,17 +102,17 @@ public class Servlet_userController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user",rs.getData());
             //调用业务层处理业务
-//            return rs;
+              return rs;
             //重定向
            // response.sendRedirect("home.jsp");
             //请求转发
-            try {
-                request.getRequestDispatcher("/WEB-INF/home.jsp").forward(request,response);
-            } catch (ServletException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                request.getRequestDispatcher("/homes.html").forward(request,response);
+//            } catch (ServletException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
         }
 
         //禁用用户的请求
@@ -137,8 +123,6 @@ public class Servlet_userController extends HttpServlet {
         //调用业务层处理业务
         return  rs;
     }
-
-    //根据用户ID查看用户详情
     //根据用户ID修改用户信息
 }
 

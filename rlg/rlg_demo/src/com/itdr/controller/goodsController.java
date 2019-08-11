@@ -46,6 +46,9 @@ public class goodsController extends HttpServlet {
             case "set_sale_status":
                 rs = set_sale_statusDo(request);
                 break;
+            case "search":
+                rs = findByText(request);
+                break;
         }
         //返回响应数据
         response.getWriter().write(rs.toString());
@@ -102,9 +105,19 @@ public class goodsController extends HttpServlet {
         ResponseCode rs =  gs.updateOne(gid,status);
         return rs ;
     }
-}
+
     //新增OR更新产品
-
-
     //图片上传
+    public void upImg(HttpServletRequest request){
+
+    }
     //富文本上传
+
+    //根据内容模糊查询
+    private ResponseCode findByText(HttpServletRequest request){
+        //获取参数
+        String keyWord=request.getParameter("key");
+        ResponseCode rs=gs.fingByText(keyWord);
+        return  rs;
+    }
+}

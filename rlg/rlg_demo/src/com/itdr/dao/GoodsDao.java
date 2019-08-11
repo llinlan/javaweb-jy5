@@ -69,6 +69,18 @@ public class GoodsDao {
         }
 
 
+    public List<Goods> fingByText(String keyWord) {
+        String sql="select * from goods where pname like?";
+        String key="%"+keyWord+"%";
+        List<Goods> li=null;
+        try {
+            //使用核心类
+            li = qr.query(sql, new BeanListHandler<Goods>(Goods.class),key);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  li;
+    }
 }
 
 

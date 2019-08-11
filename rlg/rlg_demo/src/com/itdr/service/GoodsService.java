@@ -58,5 +58,13 @@ public class GoodsService {
             li =ResponseCode.successRs(Const.GOODS_UPDATE_CODE,Const.GOODS_UPDATE_MSG);
             return li;
         }
+
+    public ResponseCode fingByText(String keyWord) {
+        //非空判断
+        ResponseCode rs=null;
+        List<Goods> li=gd.fingByText(keyWord);
+        rs=ResponseCode.successRs(li);
+        return rs;
     }
+}
 
